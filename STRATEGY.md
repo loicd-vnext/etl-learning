@@ -78,20 +78,11 @@ Dự án này sẽ giúp bạn hiểu được:
 
 ## 🛠️ Tech Stack Đề Xuất
 
-### Option 1: Python-based (Đơn giản, dễ học)
 - **Language**: Python 3.9+
 - **ETL Framework**: Pandas, PySpark (optional)
 - **Database**: PostgreSQL hoặc SQLite (cho demo)
 - **Orchestration**: Prefect hoặc Apache Airflow (local)
 - **Storage**: Local filesystem hoặc MinIO (S3-compatible)
-
-### Option 2: Modern Stack (Production-ready)
-- **Language**: Python
-- **ETL**: dbt (data build tool) cho transformation
-- **Orchestration**: Apache Airflow
-- **Database**: PostgreSQL
-- **Storage**: MinIO hoặc AWS S3
-- **Monitoring**: Great Expectations (data quality)
 
 ## 📁 Cấu Trúc Project
 
@@ -215,14 +206,6 @@ Xử lý dữ liệu bán hàng từ nhiều nguồn:
 6. **Data Lineage**: Tracking data flow
 7. **Incremental Loading**: Chỉ load data mới/changed
 8. **Idempotency**: Chạy lại pipeline không tạo duplicate
-
-## 📚 Next Steps
-
-1. Chọn tech stack (khuyến nghị: Python + PostgreSQL)
-2. Setup môi trường development
-3. Tạo sample data
-4. Implement từng layer một
-5. Test và iterate
 
 ## 🔗 Resources
 
