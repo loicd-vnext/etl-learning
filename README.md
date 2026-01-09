@@ -127,7 +127,20 @@ git clone <repository-url>
 cd etl
 ```
 
-#### 2. Setup tự động
+#### 2. Tạo file `.env`
+
+Trước khi chạy project, bạn cần tạo file `.env` từ template `.env.example`:
+
+```bash
+# Copy file .env.example thành .env
+cp .env.example .env
+```
+
+Sau đó, bạn có thể chỉnh sửa file `.env` để cấu hình các biến môi trường theo nhu cầu của mình (như database credentials, API keys, etc.).
+
+**Lưu ý**: File `.env` đã được gitignore, nên sẽ không được commit vào repository. File `.env.example` chỉ là template để tham khảo.
+
+#### 3. Setup tự động
 
 ```bash
 # Make script executable
@@ -187,14 +200,21 @@ docker compose up -d postgres
 python scripts/setup_db.py
 ```
 
-#### 3. Create `.env` file
+#### 3. Tạo file `.env`
 
 ```bash
-# Copy template
+# Copy file .env.example thành .env
 cp .env.example .env
 
-# Edit .env và update DB_HOST=localhost (thay vì postgres)
+# Chỉnh sửa file .env và cập nhật các giá trị cần thiết
+# Ví dụ: DB_HOST=localhost (thay vì postgres khi chạy local)
+# Mở file .env bằng editor yêu thích của bạn để chỉnh sửa
 ```
+
+**Lưu ý**: 
+- File `.env` chứa các biến môi trường quan trọng như database credentials, API keys, etc.
+- File này đã được gitignore nên sẽ không được commit vào repository
+- Nếu bạn chạy local (không dùng Docker), nhớ đổi `DB_HOST=localhost` thay vì `DB_HOST=postgres`
 
 #### 4. Run services
 
