@@ -1,0 +1,51 @@
+# ETL Pipeline Configuration
+
+# Pipeline settings
+pipeline:
+  name: "E-commerce Sales Pipeline"
+  version: "1.0.0"
+  run_mode: "batch"  # batch or streaming
+
+# Data sources configuration
+data_sources:
+  orders:
+    type: "csv"
+    path: "data/sample/orders.csv"
+    encoding: "utf-8"
+  
+  customers:
+    type: "json"
+    path: "data/sample/customers.json"
+    encoding: "utf-8"
+  
+  products:
+    type: "api"
+    url: "https://api.example.com/products"
+    method: "GET"
+    timeout: 30
+
+# Data storage paths
+storage:
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  log_dir: "logs"
+
+# Transformation settings
+transformation:
+  remove_duplicates: true
+  handle_nulls: "fill"  # fill, drop, or skip
+  null_fill_strategy: "mean"  # mean, median, mode, zero, or custom
+  
+# Data quality settings
+data_quality:
+  enabled: true
+  min_completeness: 0.95  # 95% of data must be complete
+  validate_schema: true
+  check_duplicates: true
+
+# Logging settings
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "detailed"  # simple or detailed
+  file_rotation: true
+

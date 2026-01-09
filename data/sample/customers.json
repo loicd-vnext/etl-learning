@@ -1,0 +1,38 @@
+[
+  {
+    "customer_id": 101,
+    "customer_name": "Nguyễn Văn A",
+    "email": "nguyenvana@example.com",
+    "city": "Hà Nội",
+    "country": "Việt Nam"
+  },
+  {
+    "customer_id": 102,
+    "customer_name": "Trần Thị B",
+    "email": "tranthib@example.com",
+    "city": "Hồ Chí Minh",
+    "country": "Việt Nam"
+  },
+  {
+    "customer_id": 103,
+    "customer_name": "Lê Văn C",
+    "email": "levanc@example.com",
+    "city": "Đà Nẵng",
+    "country": "Việt Nam"
+  },
+  {
+    "customer_id": 104,
+    "customer_name": "Phạm Thị D",
+    "email": "phamthid@example.com",
+    "city": "Hà Nội",
+    "country": "Việt Nam"
+  },
+  {
+    "customer_id": 105,
+    "customer_name": "Hoàng Văn E",
+    "email": "hoangvane@example.com",
+    "city": "Hồ Chí Minh",
+    "country": "Việt Nam"
+  }
+]
+

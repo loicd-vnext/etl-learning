@@ -1,0 +1,112 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: etl_postgres
+    environment:
+      POSTGRES_DB: etl_demo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: etl_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - etl_network
+
+  # ETL Dashboard (Streamlit)
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: etl_dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app  # Mount entire project for live code changes (no rebuild needed)
+      - /app/venv  # Exclude venv from mount
+      - /app/.git  # Exclude .git from mount
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=etl_demo
+      - DB_USER=postgres
+      - DB_PASSWORD=etl_password
+      - DB_TYPE=postgresql
+      - STREAMLIT_SERVER_ENABLE_CORS=true
+      - STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - etl_network
+    command: streamlit run dashboard.py --server.port=8501 --server.address=0.0.0.0
+
+  # Jupyter Notebooks (Development)
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: etl_jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app  # Mount entire project for live code changes (no rebuild needed)
+      - /app/venv  # Exclude venv from mount
+      - /app/.git  # Exclude .git from mount
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=etl_demo
+      - DB_USER=postgres
+      - DB_PASSWORD=etl_password
+      - DB_TYPE=postgresql
+      - JUPYTER_ENABLE_LAB=yes
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - etl_network
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' --notebook-dir=/app/notebooks
+
+  # ETL Pipeline Runner (Optional - for scheduled jobs)
+  pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: etl_pipeline
+    volumes:
+      - .:/app  # Mount entire project for live code changes
+      - /app/venv  # Exclude venv from mount
+      - /app/.git  # Exclude .git from mount
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=etl_demo
+      - DB_USER=postgres
+      - DB_PASSWORD=etl_password
+      - DB_TYPE=postgresql
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - etl_network
+    # Run pipeline manually: docker compose run --rm pipeline python scripts/run_pipeline.py
+    command: tail -f /dev/null  # Keep container running, run pipeline manually
+
+volumes:
+  postgres_data:
+
+networks:
+  etl_network:
+    driver: bridge

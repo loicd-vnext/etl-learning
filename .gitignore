@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.*
+!.env.example
+# Allow .env.example as template
+
+# Logs
+logs/
+*.log
+*.log.*
+log/
+*.log.*.gz
+
+# Data files (keep sample data, ignore raw/processed)
+data/raw/
+data/processed/
+*.db
+*.sqlite
+*.sqlite3
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Project specific
+*.bak
+*.tmp
+
+# Documentation/Memo files (personal notes)
+CHECKLIST.md
+DASHBOARD.md
+DOCKER.md

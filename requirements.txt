@@ -1,0 +1,46 @@
+# Data Engineering Demo Project - Dependencies
+
+# Core
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Database
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0  # PostgreSQL driver
+# sqlite3 comes with Python (no install needed)
+
+# API & HTTP
+requests>=2.31.0
+
+# Data Quality
+great-expectations>=0.18.0  # Optional but recommended
+
+# Orchestration
+prefect>=2.10.0  # Simple orchestration
+# apache-airflow>=2.7.0  # Alternative (more complex)
+
+# Utilities
+python-dotenv>=1.0.0
+pyyaml>=6.0
+loguru>=0.7.0  # Better logging
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Jupyter (for notebooks)
+jupyter>=1.0.0
+notebook>=7.0.0
+
+# Dashboard/BI
+streamlit>=1.28.0
+plotly>=5.17.0
+
+# Visualization (for notebooks)
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Data Lake (S3-compatible, optional)
+# boto3>=1.28.0  # For AWS S3
+# minio>=7.1.0   # For MinIO (local S3)
+

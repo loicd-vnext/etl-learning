@@ -1,0 +1,47 @@
+{
+  "products": [
+    {
+      "product_id": 201,
+      "product_name": "Laptop Dell XPS 13",
+      "category": "Electronics",
+      "brand": "Dell",
+      "price": 29.99
+    },
+    {
+      "product_id": 202,
+      "product_name": "iPhone 15 Pro",
+      "category": "Electronics",
+      "brand": "Apple",
+      "price": 49.99
+    },
+    {
+      "product_id": 203,
+      "product_name": "Wireless Mouse",
+      "category": "Accessories",
+      "brand": "Logitech",
+      "price": 19.99
+    },
+    {
+      "product_id": 204,
+      "product_name": "Mechanical Keyboard",
+      "category": "Accessories",
+      "brand": "Corsair",
+      "price": 39.99
+    },
+    {
+      "product_id": 205,
+      "product_name": "USB-C Cable",
+      "category": "Accessories",
+      "brand": "Anker",
+      "price": 15.99
+    },
+    {
+      "product_id": 206,
+      "product_name": "Monitor 27 inch",
+      "category": "Electronics",
+      "brand": "LG",
+      "price": 24.99
+    }
+  ]
+}
+
